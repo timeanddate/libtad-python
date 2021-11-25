@@ -1,0 +1,1814 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to libtad-python’s documentation! &#8212; libtad-python 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Installation" href="install.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="welcome-to-libtad-python-s-documentation">
+<h1>Welcome to libtad-python’s documentation!<a class="headerlink" href="#welcome-to-libtad-python-s-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+</ul>
+</div>
+<span class="target" id="module-libtad"></span><div class="section" id="services">
+<h2>Services<a class="headerlink" href="#services" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="libtad.HolidaysService">
+<em class="property">class </em><code class="sig-prename descclassname">libtad.</code><code class="sig-name descname">HolidaysService</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">access_key</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">secret_key</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#libtad.HolidaysService" title="Permalink to this definition">¶</a></dt>
+<dd><p>The holidays service can be used to retrieve the list of holidays for a country.</p>
+<p>…</p>
+<dl class="field-list">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl>
+<dt><strong>types</strong><span class="classifier">HolidayType</span></dt><dd><p>Holiday types which shoud be returned.
+To combine multiple classes, use the binary OR operator.</p>
+<p>Example:
+<code class="docutils literal notranslate"><span class="pre">service.IncludedHolidayTypes</span> <span class="pre">=</span> <span class="pre">HolidayType.Local</span></code></p>
+</dd>
+<dt><strong>language</strong><span class="classifier">list of str</span></dt><dd><p>The preferred language(s) for the texts. An error will be raised if the
+language code cannot be recognized. In case the text for a specific event
+cannot be retrieved in any of the requested languages it will be returned
+in English instead.</p>
+<p>It is possible to query all available languages in a single request by
+specifying a primary text language, followed by the special value _all_.
+This value can not be specified as the first language.</p>
+<p>Example:
+<code class="docutils literal notranslate"><span class="pre">service.language</span> <span class="pre">=</span> <span class="pre">[&quot;de&quot;]</span></code></p>
+<p>Example:
+<code class="docutils literal notranslate"><span class="pre">service.language.append(&quot;de&quot;)</span></code></p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 44%" />
+<col style="width: 56%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>holidays_for_country(country_code, year=datetime.now().year)</strong></p></td>
+<td><p>The holidays service can be used to retrieve the list of holidays for a country.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="libtad.HolidaysService.holidays_for_country">
+<code class="sig-name descname">holidays_for_country</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">country_code</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">year</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">2021</span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>libtad.datatypes.holidays.holiday.Holiday<span class="p">]</span><a class="headerlink" href="#libtad.HolidaysService.holidays_for_country" title="Permalink to this definition">¶</a></dt>
+<dd><p>The holidays service can be used to retrieve the list of holidays for a country.
+If the argument <cite>year</cite> is not passed in, the current year is used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>country_code</strong><span class="classifier">str</span></dt><dd><p>Specify the ISO3166-1-alpha-2 Country Code for which you would like to 
+retrieve the list of holidays.</p>
+</dd>
+<dt><strong>year</strong><span class="classifier">int, optional</span></dt><dd><p>The year for which the holidays should be retrieved.            
+Uses the current year by default.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>holiday_list</strong><span class="classifier">list of Holiday</span></dt><dd><p>List of holidays for a given country.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libtad.AstronomyService">
+<em class="property">class </em><code class="sig-prename descclassname">libtad.</code><code class="sig-name descname">AstronomyService</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">access_key</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">secret_key</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#libtad.AstronomyService" title="Permalink to this definition">¶</a></dt>
+<dd><p>The astronomy service can be used retrieve the sunrise, sunset, moonrise, 
+moonset, solar noon and twilight times for all locations in our database.</p>
+<p>…</p>
+<dl class="field-list">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl>
+<dt><strong>types</strong><span class="classifier">AstronomyEventClass</span></dt><dd><p>Selection of which astronomical events you are interested in.
+To combine multiple classes, use the binary OR operator.</p>
+<p>Example:
+<code class="docutils literal notranslate"><span class="pre">service.Types</span> <span class="pre">=</span> <span class="pre">AstronomyEventClass.CivilTwilight</span> <span class="pre">|</span> <span class="pre">AstronomyEventClass.NauticalTwilight</span></code></p>
+</dd>
+<dt><strong>include_coordinates</strong><span class="classifier">bool</span></dt><dd><p>Return longitude and latitude for the geo object.</p>
+</dd>
+<dt><strong>include_isotime</strong><span class="classifier">bool</span></dt><dd><p>Adds timestamps (local time) to all events.</p>
+</dd>
+<dt><strong>include_utctime</strong><span class="classifier">bool</span></dt><dd><p>Adds UTC timestamps to all events.</p>
+</dd>
+<dt><strong>radius</strong><span class="classifier">int</span></dt><dd><p>Search radius for translating coordinates (parameter placeid) to locations. 
+Coordinates that could not be translated will yield results for the actual 
+geographical position – if you would like to query for times at an exact 
+location, specify a radius of zero (0).</p>
+<p>The radius in kilometers. Default is infinite, but only locations within 
+the same country and time zone are considered.</p>
+</dd>
+<dt><strong>language</strong><span class="classifier">list of str</span></dt><dd><p>The preferred language(s) for the texts. An error will be raised if the
+language code cannot be recognized. In case the text for a specific event
+cannot be retrieved in any of the requested languages it will be returned
+in English instead.</p>
+<p>It is possible to query all available languages in a single request by
+specifying a primary text language, followed by the special value _all_.
+This value can not be specified as the first language.</p>
+<p>Example:
+<code class="docutils literal notranslate"><span class="pre">service.language</span> <span class="pre">=</span> <span class="pre">[&quot;de&quot;]</span></code></p>
+<p>Example:
+<code class="docutils literal notranslate"><span class="pre">service.language.append(&quot;de&quot;)</span></code></p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 53%" />
+<col style="width: 47%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>get_astronomical_info(object_type, place_id, start_date, end_date=None)</strong></p></td>
+<td><p>Gets the specified object type for a specified place by start date.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="libtad.AstronomyService.get_astronomical_info">
+<code class="sig-name descname">get_astronomical_info</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">object_type</span><span class="p">:</span> <span class="n">libtad.datatypes.astro.astronomy_object_type.AstronomyObjectType</span></em>, <em class="sig-param"><span class="n">place_id</span><span class="p">:</span> <span class="n">libtad.datatypes.places.location_id.LocationId</span></em>, <em class="sig-param"><span class="n">start_date</span><span class="p">:</span> <span class="n">libtad.datatypes.time.tad_date_time.TADDateTime</span></em>, <em class="sig-param"><span class="n">end_date</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>libtad.datatypes.time.tad_date_time.TADDateTime<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>libtad.datatypes.astro.astronomy_location.AstronomyLocation<span class="p">]</span><a class="headerlink" href="#libtad.AstronomyService.get_astronomical_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the specified object type for a specified place by start date.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>object_type</strong><span class="classifier">AstronomyObjectType</span></dt><dd><p>The astronomical object type.</p>
+</dd>
+<dt><strong>place_id</strong><span class="classifier">LocationId</span></dt><dd><p>Place identifier.</p>
+</dd>
+<dt><strong>start_date</strong><span class="classifier">TADDateTime</span></dt><dd><p>Start date.</p>
+</dd>
+<dt><strong>end_date</strong><span class="classifier">TADDateTime, optional</span></dt><dd><p>End date.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>astronomy_locations</strong><span class="classifier">list of AstronomyLocation</span></dt><dd><p>A list of astronomical information.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libtad.AstrodataService">
+<em class="property">class </em><code class="sig-prename descclassname">libtad.</code><code class="sig-name descname">AstrodataService</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">access_key</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">secret_key</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#libtad.AstrodataService" title="Permalink to this definition">¶</a></dt>
+<dd><p>The astrodata service can be used retrieve the altitude, azimuth and 
+distance to the Moon and the Sun for all locations in our database. The 
+service also returns the moon phase, the fraction of the Moons illuminated 
+side as well as the midpoint angle of the Moons bright limb at any point in 
+time.</p>
+<p>…</p>
+<dl class="field-list">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl>
+<dt><strong>is_localtime</strong><span class="classifier">bool</span></dt><dd><p>Whether or not the intervals is in local time for the locations queried 
+or UTC time.</p>
+</dd>
+<dt><strong>include_isotime</strong><span class="classifier">bool</span></dt><dd><p>Adds time stamps (local time) in ISO 8601 format to all events.</p>
+</dd>
+<dt><strong>include_utctime</strong><span class="classifier">bool</span></dt><dd><p>Adds UTC time stamps in ISO 8601 format to all events.</p>
+</dd>
+<dt><strong>radius</strong><span class="classifier">int</span></dt><dd><p>Search radius for translating coordinates (parameter placeid) to locations.
+Coordinates that could not be translated will yield results for the actual
+geographical position – if you would like to query for times at an exact
+location, specify a radius of zero (0).</p>
+<p>The radius in kilometers. Default is infinite, but only locations within
+the same country and time zone are considered.</p>
+</dd>
+<dt><strong>language</strong><span class="classifier">list of str</span></dt><dd><p>The preferred language(s) for the texts. An error will be raised if the
+language code cannot be recognized. In case the text for a specific event
+cannot be retrieved in any of the requested languages it will be returned
+in English instead.</p>
+<p>It is possible to query all available languages in a single request by
+specifying a primary text language, followed by the special value _all_.
+This value can not be specified as the first language.</p>
+<p>Example:
+<code class="docutils literal notranslate"><span class="pre">service.language</span> <span class="pre">=</span> <span class="pre">[&quot;de&quot;]</span></code></p>
+<p>Example:
+<code class="docutils literal notranslate"><span class="pre">service.language.append(&quot;de&quot;)</span></code></p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 37%" />
+<col style="width: 63%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>get_astrodata(object_type, place_id, interval)</strong></p></td>
+<td><p>Gets astronomical data for an object at a specific place on specific points in time.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="libtad.AstrodataService.get_astrodata">
+<code class="sig-name descname">get_astrodata</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">object_type</span><span class="p">:</span> <span class="n">libtad.datatypes.astro.astronomy_object_type.AstronomyObjectType</span></em>, <em class="sig-param"><span class="n">place_id</span><span class="p">:</span> <span class="n">libtad.datatypes.places.location_id.LocationId</span></em>, <em class="sig-param"><span class="n">interval</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>libtad.datatypes.time.tad_date_time.TADDateTime<span class="p">, </span>List<span class="p">[</span>libtad.datatypes.time.tad_date_time.TADDateTime<span class="p">]</span><span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>libtad.datatypes.astro.astronomy_location.AstronomyLocation<span class="p">]</span><a class="headerlink" href="#libtad.AstrodataService.get_astrodata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets astronomical data for an object at a specific place on specific 
+points in time.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>object_type</strong><span class="classifier">AstronomyObjectType</span></dt><dd><p>The astronomical object type.</p>
+</dd>
+<dt><strong>place_id</strong><span class="classifier">LocationId</span></dt><dd><p>Place identifier.</p>
+</dd>
+<dt><strong>interval</strong><span class="classifier">TADDateTime or list of TADDateTime</span></dt><dd><p>Points in time to query for, using comma to separate multiple 
+timestamps, in ISO 8601 timestamp format.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>astronomy_locations</strong><span class="classifier">list of AstronomyLocation</span></dt><dd><p>A list of astronomical information</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libtad.DSTService">
+<em class="property">class </em><code class="sig-prename descclassname">libtad.</code><code class="sig-name descname">DSTService</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">access_key</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">secret_key</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#libtad.DSTService" title="Permalink to this definition">¶</a></dt>
+<dd><p>The dstlist service can be used to obtain data about time zones for all
+supported countries in our database. This includes the start and end
+date of daylight savings time, and UTC offset for the time zones.</p>
+<p>The resulting data is aggregated on country and time zone level. 
+By default, only information from countries which actually observe DST 
+is returned without listing the individually affected locations – see 
+the parameters listplaces and onlydst to change this behavior.</p>
+<p>…</p>
+<dl class="field-list">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl>
+<dt><strong>include_time_changes</strong><span class="classifier">bool</span></dt><dd><p>Add a list of time changes during the year to the dstentry object. 
+This listing e.g. shows changes caused by daylight savings time.</p>
+</dd>
+<dt><strong>include_only_dst_countries</strong><span class="classifier">bool</span></dt><dd><p>Return only countries which actually observe DST in the queried year. 
+Other countries will be suppressed.</p>
+</dd>
+<dt><strong>include_places_for_every_country</strong><span class="classifier">bool</span></dt><dd><p>For every time zone/country, list the individual places that belong to
+each record.</p>
+</dd>
+<dt><strong>language</strong><span class="classifier">list of str</span></dt><dd><p>The preferred language(s) for the texts. An error will be raised if the
+language code cannot be recognized. In case the text for a specific event
+cannot be retrieved in any of the requested languages it will be returned
+in English instead.</p>
+<p>It is possible to query all available languages in a single request by
+specifying a primary text language, followed by the special value _all_.
+This value can not be specified as the first language.</p>
+<p>Example:
+<code class="docutils literal notranslate"><span class="pre">service.language</span> <span class="pre">=</span> <span class="pre">[&quot;de&quot;]</span></code></p>
+<p>Example:
+<code class="docutils literal notranslate"><span class="pre">service.language.append(&quot;de&quot;)</span></code></p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 54%" />
+<col style="width: 46%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>get_daylight_saving_time(country_code=None, year=None)</strong></p></td>
+<td><p>Gets the daylight saving time by country and year.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="libtad.DSTService.get_daylight_saving_time">
+<code class="sig-name descname">get_daylight_saving_time</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">country_code</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">year</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>libtad.datatypes.dst.dst.DST<span class="p">]</span><a class="headerlink" href="#libtad.DSTService.get_daylight_saving_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the daylight saving time by country and year.</p>
+<p>If <cite>country_code</cite> is unspecified, information for all countries will be
+returned. If <cite>year</cite> is unspecified, current year is used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>country_code</strong><span class="classifier">str, optional</span></dt><dd><p>ISO3166-1-alpha-2 Country Code.
+Uses all countries by default.</p>
+</dd>
+<dt><strong>year</strong><span class="classifier">int, optional</span></dt><dd><p>Year.
+Uses the current year by default.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>dst_list</strong><span class="classifier">list of DST</span></dt><dd><p>The DST information for each country or region.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libtad.ConvertTimeService">
+<em class="property">class </em><code class="sig-prename descclassname">libtad.</code><code class="sig-name descname">ConvertTimeService</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">access_key</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">secret_key</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#libtad.ConvertTimeService" title="Permalink to this definition">¶</a></dt>
+<dd><p>The converttime service can be used to convert any time from UTC or any of 
+the supported locations to any other of the supported locations.
+…</p>
+<dl class="field-list">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl>
+<dt><strong>radius</strong><span class="classifier">int</span></dt><dd><p>Search radius for translating coordinates (parameters fromid and toid)
+to locations. Coordinates that could not be translated will yield results
+for the actual geographical position.</p>
+</dd>
+<dt><strong>include_time_changes</strong><span class="classifier">bool</span></dt><dd><p>Add a list of time changes during the year to the location object. This listing
+e.g. shows changes caused by daylight savings time.</p>
+</dd>
+<dt><strong>include_timezone_information</strong><span class="classifier">bool</span></dt><dd><p>Add timezone information under the time object.</p>
+</dd>
+<dt><strong>language</strong><span class="classifier">list of str</span></dt><dd><p>The preferred language(s) for the texts. An error will be raised if the
+language code cannot be recognized. In case the text for a specific event
+cannot be retrieved in any of the requested languages it will be returned
+in English instead.</p>
+<p>It is possible to query all available languages in a single request by
+specifying a primary text language, followed by the special value _all_.
+This value can not be specified as the first language.</p>
+<p>Example:
+<code class="docutils literal notranslate"><span class="pre">service.language</span> <span class="pre">=</span> <span class="pre">[&quot;de&quot;]</span></code></p>
+<p>Example:
+<code class="docutils literal notranslate"><span class="pre">service.language.append(&quot;de&quot;)</span></code></p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 69%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>convert_time(from_id, time, to_ids=None)</strong></p></td>
+<td><p>Converts the time by using a LocationId, a ISO-string and optionally a list of IDs to convert to.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="libtad.ConvertTimeService.convert_time">
+<code class="sig-name descname">convert_time</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">from_id</span><span class="p">:</span> <span class="n">libtad.datatypes.places.location_id.LocationId</span></em>, <em class="sig-param"><span class="n">time</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>str<span class="p">, </span>libtad.datatypes.time.tad_date_time.TADDateTime<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">to_ids</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>List<span class="p">[</span>libtad.datatypes.places.location_id.LocationId<span class="p">]</span><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; libtad.datatypes.converted_times.converted_times.ConvertedTimes<a class="headerlink" href="#libtad.ConvertTimeService.convert_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts the time by using a LocationId, a ISO-string and optionally a list
+of IDs to convert to.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>from_id</strong><span class="classifier">LocationId</span></dt><dd><p>The places identifier.</p>
+</dd>
+<dt><strong>time</strong><span class="classifier">str or TADDateTime</span></dt><dd><p>ISO 8601-formatted string or TADDateTime object.</p>
+</dd>
+<dt><strong>to_ids</strong><span class="classifier">list of LocationId, optional</span></dt><dd><p>The place IDs to convert to.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>converted_time</strong><span class="classifier">ConvertedTimes</span></dt><dd><p>An object containing UTC time stamp of requested time and a list of time 
+information for the locations in the request.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libtad.PlacesService">
+<em class="property">class </em><code class="sig-prename descclassname">libtad.</code><code class="sig-name descname">PlacesService</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">access_key</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">secret_key</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#libtad.PlacesService" title="Permalink to this definition">¶</a></dt>
+<dd><p>The places service can be used to retrieve the list of supported places.</p>
+<p>…</p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>include_coordinates</strong><span class="classifier">bool</span></dt><dd><p>Return coordinates for the Geography object.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 35%" />
+<col style="width: 65%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>get_places()</strong></p></td>
+<td><p>Gets list of supported places.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="libtad.PlacesService.get_places">
+<code class="sig-name descname">get_places</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>libtad.datatypes.places.place.Place<span class="p">]</span><a class="headerlink" href="#libtad.PlacesService.get_places" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets list of supported places.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>places</strong><span class="classifier">list of Place</span></dt><dd><p>List of all currently known places, their identifiers and their 
+geographical location (if requested).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libtad.TimeService">
+<em class="property">class </em><code class="sig-prename descclassname">libtad.</code><code class="sig-name descname">TimeService</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">access_key</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">secret_key</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#libtad.TimeService" title="Permalink to this definition">¶</a></dt>
+<dd><p>The timeservice service can be used to retrieve the current time in one 
+or more places. Additionally, information about time zones and related 
+changes and the time of sunrise and sunset can be queried.</p>
+<p>…</p>
+<dl class="field-list">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl>
+<dt><strong>radius</strong><span class="classifier">int</span></dt><dd><p>Search radius for translating coordinates (parameter placeid) to locations. 
+Coordinates that could not be translated will yield results for the actual 
+geographical position.</p>
+<p>The radius in kilometers. Default is infinite, but only locations within 
+the same country and time zone are considered.</p>
+</dd>
+<dt><strong>include_coordinates</strong><span class="classifier">bool</span></dt><dd><p>Return coordinates for the Geography object.</p>
+</dd>
+<dt><strong>include_sunrise_and_sunset</strong><span class="classifier">bool</span></dt><dd><p>Controls if the astronomy element with information about sunrise and 
+sunset shall be added to the result.</p>
+</dd>
+<dt><strong>include_current_time_to_location</strong><span class="classifier">bool</span></dt><dd><p>Adds current time under the location object.</p>
+</dd>
+<dt><strong>include_list_of_time_changes</strong><span class="classifier">bool</span></dt><dd><p>Add a list of time changes during the year to the location object. This 
+listing e.g. shows changes caused by daylight savings time.</p>
+</dd>
+<dt><strong>include_timezone_information</strong><span class="classifier">bool</span></dt><dd><p>Add timezone information under the time object.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 54%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>current_time_for_place(place_id)</strong></p></td>
+<td><p>Retrieves the current time for place by ID.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="libtad.TimeService.current_time_for_place">
+<code class="sig-name descname">current_time_for_place</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">place_id</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>libtad.datatypes.places.location_id.LocationId<span class="p">, </span>List<span class="p">[</span>libtad.datatypes.places.location_id.LocationId<span class="p">]</span><span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>libtad.datatypes.places.location.Location<span class="p">]</span><a class="headerlink" href="#libtad.TimeService.current_time_for_place" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves the current time for place by ID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>place_id</strong><span class="classifier">LocationId or list of LocationId</span></dt><dd><p>Place identifier.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>location_times</strong><span class="classifier">list of Location</span></dt><dd><p>The current time for place.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libtad.BusinessDateService">
+<em class="property">class </em><code class="sig-prename descclassname">libtad.</code><code class="sig-name descname">BusinessDateService</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">access_key</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">secret_key</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#libtad.BusinessDateService" title="Permalink to this definition">¶</a></dt>
+<dd><p>The businessdate service can be used to find a business date from a 
+specified number of days.</p>
+<p>You can choose if you want to calculate the business date by 
+adding (default) or subtracting the given days, and whether or not a 
+specific filter should be applied to the result. By default the result 
+will be filtered on excluding weekends and public holidays, but you 
+can specify a custom filter to modify this.</p>
+<p>…</p>
+<dl class="field-list">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl>
+<dt><strong>include</strong><span class="classifier">bool</span></dt><dd><p>Specify whether the result should be calculated by including instead 
+of excluding the days.</p>
+</dd>
+<dt><strong>filter</strong><span class="classifier">BusinessDaysFilterType or list of BusinessDaysFilterType</span></dt><dd><p>Choose a set of types or days you want to filter on.</p>
+</dd>
+<dt><strong>operator</strong><span class="classifier">BusinessDaysOperatorType</span></dt><dd><p>Set if the service should do an addition or subtraction of the 
+specified days.</p>
+</dd>
+<dt><strong>repeat</strong><span class="classifier">int</span></dt><dd><p>Set how many times the calculation should be repeated (only applicable 
+when days parameter has exactly one number).</p>
+</dd>
+<dt><strong>language</strong><span class="classifier">list of str</span></dt><dd><p>The preferred language(s) for the texts. An error will be raised if the
+language code cannot be recognized. In case the text for a specific event
+cannot be retrieved in any of the requested languages it will be returned
+in English instead.</p>
+<p>It is possible to query all available languages in a single request by
+specifying a primary text language, followed by the special value _all_.
+This value can not be specified as the first language.</p>
+<p>Example:
+<code class="docutils literal notranslate"><span class="pre">service.language</span> <span class="pre">=</span> <span class="pre">[&quot;de&quot;]</span></code></p>
+<p>Example:
+<code class="docutils literal notranslate"><span class="pre">service.language.append(&quot;de&quot;)</span></code></p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 58%" />
+<col style="width: 42%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>get_business_date_for_place(place_id, start_date, days)</strong></p></td>
+<td><p>Gets the business dates by place id.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>get_business_date_for_country(country_iso, start_date, days, state_iso=None)</strong></p></td>
+<td><p>Gets the business dates by country and an optional state.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="libtad.BusinessDateService.get_business_date_for_country">
+<code class="sig-name descname">get_business_date_for_country</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">country_iso</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">start_date</span><span class="p">:</span> <span class="n">libtad.datatypes.time.tad_date_time.TADDateTime</span></em>, <em class="sig-param"><span class="n">days</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>int<span class="p">, </span>List<span class="p">[</span>int<span class="p">]</span><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">state_iso</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; libtad.datatypes.business.business_dates.BusinessDates<a class="headerlink" href="#libtad.BusinessDateService.get_business_date_for_country" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the business dates by country and an optional state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>country_iso</strong><span class="classifier">LocationId</span></dt><dd><p>The country for which you would like to calculate the business date.</p>
+</dd>
+<dt><strong>start_date</strong><span class="classifier">TADDateTime</span></dt><dd><p>The first date to count.</p>
+</dd>
+<dt><strong>days</strong><span class="classifier">int or list of int</span></dt><dd><p>How many business days to count.</p>
+</dd>
+<dt><strong>state_iso</strong><span class="classifier">str, optional</span></dt><dd><p>The state in the given country you want to calculate the business date.
+Uses no states as default.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>business_dates</strong><span class="classifier">BusinessDates</span></dt><dd><p>Object containing geographical information and a list of the 
+calculated result for the requested period.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libtad.BusinessDateService.get_business_date_for_place">
+<code class="sig-name descname">get_business_date_for_place</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">place_id</span><span class="p">:</span> <span class="n">libtad.datatypes.places.location_id.LocationId</span></em>, <em class="sig-param"><span class="n">start_date</span><span class="p">:</span> <span class="n">libtad.datatypes.time.tad_date_time.TADDateTime</span></em>, <em class="sig-param"><span class="n">days</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>int<span class="p">, </span>List<span class="p">[</span>int<span class="p">]</span><span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; libtad.datatypes.business.business_dates.BusinessDates<a class="headerlink" href="#libtad.BusinessDateService.get_business_date_for_place" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the business dates by place id.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>place_id</strong><span class="classifier">LocationId</span></dt><dd><p>Place identifier.</p>
+</dd>
+<dt><strong>start_date</strong><span class="classifier">TADDateTime</span></dt><dd><p>The first date to count.</p>
+</dd>
+<dt><strong>days</strong><span class="classifier">int or list of int</span></dt><dd><p>How many business days to count.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>business_dates</strong><span class="classifier">BusinessDates</span></dt><dd><p>Object containing geographical information and a list of the 
+calculated result for the requested period.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libtad.BusinessDurationService">
+<em class="property">class </em><code class="sig-prename descclassname">libtad.</code><code class="sig-name descname">BusinessDurationService</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">access_key</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">secret_key</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#libtad.BusinessDurationService" title="Permalink to this definition">¶</a></dt>
+<dd><p>The businessduration service can be used to calculate the number of business
+days between a specified start date and end date.</p>
+<p>When you query the businessduration service with a placeid or a country, a 
+start date and an end date the service will return the number of business 
+days in that date range by excluding public holidays and weekends. 
+Furthermore, you can apply additional filters such as individual days and 
+whether or not the calculation should include the filter result or 
+exclude it.</p>
+<p>…</p>
+<dl class="field-list">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl>
+<dt><strong>include</strong><span class="classifier">bool</span></dt><dd><p>Specify whether the result should be calculated by including instead
+of excluding the days.</p>
+</dd>
+<dt><strong>filter</strong><span class="classifier">BusinessDaysFilterType or list of BusinessDaysFilterType</span></dt><dd><p>Choose a set of types or days you want to filter on.</p>
+</dd>
+<dt><strong>include_last_date</strong><span class="classifier">bool</span></dt><dd><p>Whether or not the last date (end_date) should be counted in the result.</p>
+</dd>
+<dt><strong>language</strong><span class="classifier">list of str</span></dt><dd><p>The preferred language(s) for the texts. An error will be raised if the
+language code cannot be recognized. In case the text for a specific event
+cannot be retrieved in any of the requested languages it will be returned
+in English instead.</p>
+<p>It is possible to query all available languages in a single request by
+specifying a primary text language, followed by the special value _all_.
+This value can not be specified as the first language.</p>
+<p>Example:
+<code class="docutils literal notranslate"><span class="pre">service.language</span> <span class="pre">=</span> <span class="pre">[&quot;de&quot;]</span></code></p>
+<p>Example:
+<code class="docutils literal notranslate"><span class="pre">service.language.append(&quot;de&quot;)</span></code></p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 60%" />
+<col style="width: 40%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>get_business_duration_for_place(place_id, start_date, days)</strong></p></td>
+<td><p>Gets the business dates by place id.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>get_business_duration_for_country(country_iso, start_date, days, state_iso=None)</strong></p></td>
+<td><p>Gets the business dates by country and an optional state.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="libtad.BusinessDurationService.get_business_duration_for_country">
+<code class="sig-name descname">get_business_duration_for_country</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">country_iso</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">start_date</span><span class="p">:</span> <span class="n">libtad.datatypes.time.tad_date_time.TADDateTime</span></em>, <em class="sig-param"><span class="n">end_date</span><span class="p">:</span> <span class="n">libtad.datatypes.time.tad_date_time.TADDateTime</span></em>, <em class="sig-param"><span class="n">state_iso</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; libtad.datatypes.business.business_dates.BusinessDates<a class="headerlink" href="#libtad.BusinessDurationService.get_business_duration_for_country" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the business dates by country and an optional state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>country_iso</strong><span class="classifier">LocationId</span></dt><dd><p>The country for which you would like to calculate the business date.</p>
+</dd>
+<dt><strong>start_date</strong><span class="classifier">TADDateTime</span></dt><dd><p>The first date to count.</p>
+</dd>
+<dt><strong>end_date</strong><span class="classifier">TADDateTime</span></dt><dd><p>The last date to count.</p>
+</dd>
+<dt><strong>state_iso</strong><span class="classifier">str, optional</span></dt><dd><p>The state in the given country you want to calculate the business date.
+Uses no states as default.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>business_dates</strong><span class="classifier">BusinessDates</span></dt><dd><p>Object containing geographical information and a list of the
+calculated result for the requested period.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libtad.BusinessDurationService.get_business_duration_for_place">
+<code class="sig-name descname">get_business_duration_for_place</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">place_id</span><span class="p">:</span> <span class="n">libtad.datatypes.places.location_id.LocationId</span></em>, <em class="sig-param"><span class="n">start_date</span><span class="p">:</span> <span class="n">libtad.datatypes.time.tad_date_time.TADDateTime</span></em>, <em class="sig-param"><span class="n">end_date</span><span class="p">:</span> <span class="n">libtad.datatypes.time.tad_date_time.TADDateTime</span></em><span class="sig-paren">)</span> &#x2192; libtad.datatypes.business.business_dates.BusinessDates<a class="headerlink" href="#libtad.BusinessDurationService.get_business_duration_for_place" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the business dates by place id.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>place_id</strong><span class="classifier">LocationId</span></dt><dd><p>Place identifier.</p>
+</dd>
+<dt><strong>start_date</strong><span class="classifier">TADDateTime</span></dt><dd><p>The first date to count.</p>
+</dd>
+<dt><strong>end_date</strong><span class="classifier">TADDateTime</span></dt><dd><p>The last date to count.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>business_dates</strong><span class="classifier">BusinessDates</span></dt><dd><p>Object containing geographical information and a list of the
+calculated result for the requested period.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-libtad.datatypes">
+<span id="datatypes"></span><h2>Datatypes<a class="headerlink" href="#module-libtad.datatypes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-libtad.datatypes.places">
+<span id="places"></span><h3>Places<a class="headerlink" href="#module-libtad.datatypes.places" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="libtad.datatypes.places.Country">
+<em class="property">class </em><code class="sig-prename descclassname">libtad.datatypes.places.</code><code class="sig-name descname">Country</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span><span class="p">:</span> <span class="n">xml.etree.ElementTree.Element</span></em><span class="sig-paren">)</span><a class="headerlink" href="#libtad.datatypes.places.Country" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class used for country data</p>
+<p>…</p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>id</strong><span class="classifier">str</span></dt><dd><p>The ISO 3166-1-alpha-2 country code.</p>
+</dd>
+<dt><strong>name</strong><span class="classifier">str</span></dt><dd><p>Full name of the country.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="libtad.datatypes.places.Geo">
+<em class="property">class </em><code class="sig-prename descclassname">libtad.datatypes.places.</code><code class="sig-name descname">Geo</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span><span class="p">:</span> <span class="n">xml.etree.ElementTree.Element</span></em><span class="sig-paren">)</span><a class="headerlink" href="#libtad.datatypes.places.Geo" title="Permalink to this definition">¶</a></dt>
+<dd><p>The geographical information type.</p>
+<p>…</p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>name</strong><span class="classifier">str</span></dt><dd><p>The name of the location.</p>
+</dd>
+<dt><strong>state</strong><span class="classifier">str</span></dt><dd><p>The state of the location within the country (only if applicable).</p>
+</dd>
+<dt><strong>country</strong><span class="classifier">Country</span></dt><dd><p>Country of the location.</p>
+</dd>
+<dt><strong>coordinates</strong><span class="classifier">Coordinates</span></dt><dd><p>Geographical coordinates of the location.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="libtad.datatypes.places.Place">
+<em class="property">class </em><code class="sig-prename descclassname">libtad.datatypes.places.</code><code class="sig-name descname">Place</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span><span class="p">:</span> <span class="n">xml.etree.ElementTree.Element</span></em><span class="sig-paren">)</span><a class="headerlink" href="#libtad.datatypes.places.Place" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class used for places</p>
+<p>…</p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>id</strong><span class="classifier">int</span></dt><dd><p>Numerical id of the referenced place.</p>
+</dd>
+<dt><strong>urlid</strong><span class="classifier">str</span></dt><dd><p>Textual id of the referenced place.</p>
+</dd>
+<dt><strong>geography</strong><span class="classifier">Geo</span></dt><dd><p>Geographical information about the location.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="libtad.datatypes.places.LocationRef">
+<em class="property">class </em><code class="sig-prename descclassname">libtad.datatypes.places.</code><code class="sig-name descname">LocationRef</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span><span class="p">:</span> <span class="n">xml.etree.ElementTree.Element</span></em><span class="sig-paren">)</span><a class="headerlink" href="#libtad.datatypes.places.LocationRef" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class used for locations referenced by a region.</p>
+<p>…</p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>id</strong><span class="classifier">str</span></dt><dd><p>The id of the location.</p>
+</dd>
+<dt><strong>name</strong><span class="classifier">str</span></dt><dd><p>The name of the location.</p>
+</dd>
+<dt><strong>state</strong><span class="classifier">str</span></dt><dd><p>The state of the location within the country (only if applicable).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="libtad.datatypes.places.LocationId">
+<em class="property">class </em><code class="sig-prename descclassname">libtad.datatypes.places.</code><code class="sig-name descname">LocationId</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">location</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>str<span class="p">, </span>int<span class="p">, </span>libtad.datatypes.places.coordinates.Coordinates<span class="p">, </span>libtad.datatypes.places.place.Place<span class="p">]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libtad.datatypes.places.LocationId" title="Permalink to this definition">¶</a></dt>
+<dd><p>LocationId class represents the different kinds of IDs that Time and Date API
+does support.</p>
+<p>…</p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>textual_id</strong><span class="classifier">str</span></dt><dd><p>Can be country code, country name, city, etc.</p>
+</dd>
+<dt><strong>numeric_id</strong><span class="classifier">int</span></dt><dd><p>Usually an integer ID that is returned from a previous API call.</p>
+</dd>
+<dt><strong>coordinates</strong><span class="classifier">Coordinates</span></dt><dd><p>Provide an coordinate object to LocationId.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="libtad.datatypes.places.Location">
+<em class="property">class </em><code class="sig-prename descclassname">libtad.datatypes.places.</code><code class="sig-name descname">Location</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span><span class="p">:</span> <span class="n">xml.etree.ElementTree.Element</span></em><span class="sig-paren">)</span><a class="headerlink" href="#libtad.datatypes.places.Location" title="Permalink to this definition">¶</a></dt>
+<dd><p>An object containing data for location.</p>
+<p>…</p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>id</strong><span class="classifier">str</span></dt><dd><p>The id of the location.</p>
+</dd>
+<dt><strong>geography</strong><span class="classifier">Geo</span></dt><dd><p>Geographical information about the location.</p>
+</dd>
+<dt><strong>time</strong><span class="classifier">TADTime</span></dt><dd><p>Time information about the location. Only present if requested.</p>
+</dd>
+<dt><strong>time_changes</strong><span class="classifier">list of TimeChange</span></dt><dd><p>Time changes (daylight savings time). Only present if requested and 
+information is available.</p>
+</dd>
+<dt><strong>astronomy</strong><span class="classifier">list of Astronomy</span></dt><dd><p>Astronomical information – sunrise and sunset times.
+Only for the timeservice and if requested.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="libtad.datatypes.places.Region">
+<em class="property">class </em><code class="sig-prename descclassname">libtad.datatypes.places.</code><code class="sig-name descname">Region</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span><span class="p">:</span> <span class="n">xml.etree.ElementTree.Element</span></em><span class="sig-paren">)</span><a class="headerlink" href="#libtad.datatypes.places.Region" title="Permalink to this definition">¶</a></dt>
+<dd><p>The geographical region. Contains country, a textual description of 
+the region and the name of the biggest place.</p>
+<p>…</p>
+<dl class="field-list">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl>
+<dt><strong>country</strong><span class="classifier">Country</span></dt><dd><p>The country.</p>
+</dd>
+<dt><strong>description</strong><span class="classifier">str</span></dt><dd><p>Textual description of a region.</p>
+<p>Example: All locations</p>
+<p>Example: most of Newfoundland and Labrador</p>
+<p>Example: some regions of Nunavut Territory; small region of Ontario</p>
+</dd>
+<dt><strong>biggest_place</strong><span class="classifier">str</span></dt><dd><p>Name of the biggest city within the region.</p>
+</dd>
+<dt><strong>locations</strong><span class="classifier">list of LocationRef</span></dt><dd><p>A list of all locations referenced by this region. Only returned if 
+requested by specifying the parameter listplaces.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-libtad.datatypes.time">
+<span id="time"></span><h3>Time<a class="headerlink" href="#module-libtad.datatypes.time" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="libtad.datatypes.time.TADTime">
+<em class="property">class </em><code class="sig-prename descclassname">libtad.datatypes.time.</code><code class="sig-name descname">TADTime</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span><span class="p">:</span> <span class="n">xml.etree.ElementTree.Element</span></em><span class="sig-paren">)</span><a class="headerlink" href="#libtad.datatypes.time.TADTime" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class used to store information about time and timezone.</p>
+<p>…</p>
+<dl class="field-list">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl>
+<dt><strong>iso</strong><span class="classifier">str</span></dt><dd><p>ISO representation of date and time, timezone included if
+different from UTC. If time is not applicable, only the
+date is shown.</p>
+<p>Example: 2011-06-08T09:18:16+02:00</p>
+<p>Example: 2011-06-08T07:18:16 (UTC time)</p>
+<p>Example: 2011-06-08 (only date)</p>
+</dd>
+<dt><strong>datetime</strong><span class="classifier">TADDateTime</span></dt><dd><p>Date and time representation of the ISO string.</p>
+</dd>
+<dt><strong>timezone</strong><span class="classifier">TADTimezone</span></dt><dd><p>Timezone information. Element is only present if different
+from UTC and requested by specifying the
+IncludeTimezoneInformation parameter.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="libtad.datatypes.time.TADTimezone">
+<em class="property">class </em><code class="sig-prename descclassname">libtad.datatypes.time.</code><code class="sig-name descname">TADTimezone</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span><span class="p">:</span> <span class="n">xml.etree.ElementTree.Element</span></em><span class="sig-paren">)</span><a class="headerlink" href="#libtad.datatypes.time.TADTimezone" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class used to store information about timezones.</p>
+<p>…</p>
+<dl class="field-list">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl>
+<dt><strong>abbreviation</strong><span class="classifier">str</span></dt><dd><p>Abbreviated timezone name.</p>
+<p>Example: LHDT</p>
+</dd>
+<dt><strong>name</strong><span class="classifier">str</span></dt><dd><p>Full timezone name.</p>
+<p>Example: Lord Howe Daylight Time</p>
+</dd>
+<dt><strong>offset</strong><span class="classifier">TADTimeSpan</span></dt><dd><p>The timezone offset (from UTC) as TimeSpan.</p>
+</dd>
+<dt><strong>basic_offset</strong><span class="classifier">int</span></dt><dd><p>Basic timezone offset (without DST) in seconds.</p>
+</dd>
+<dt><strong>dst_offset</strong><span class="classifier">int</span></dt><dd><p>DST component of timezone offset in seconds.</p>
+</dd>
+<dt><strong>total_offset</strong><span class="classifier">int</span></dt><dd><p>Total offset from UTC in seconds.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="libtad.datatypes.time.TADDateTime">
+<em class="property">class </em><code class="sig-prename descclassname">libtad.datatypes.time.</code><code class="sig-name descname">TADDateTime</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">year</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em>, <em class="sig-param"><span class="n">month</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">1</span></em>, <em class="sig-param"><span class="n">day</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">1</span></em>, <em class="sig-param"><span class="n">hour</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em>, <em class="sig-param"><span class="n">minute</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em>, <em class="sig-param"><span class="n">second</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em>, <em class="sig-param"><span class="n">microsecond</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#libtad.datatypes.time.TADDateTime" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class used to store date and time.</p>
+<p>…</p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>year</strong><span class="classifier">int</span></dt><dd><p>Year.</p>
+</dd>
+<dt><strong>month</strong><span class="classifier">int</span></dt><dd><p>Month.</p>
+</dd>
+<dt><strong>day</strong><span class="classifier">int</span></dt><dd><p>Day.</p>
+</dd>
+<dt><strong>hour</strong><span class="classifier">int</span></dt><dd><p>Hour.</p>
+</dd>
+<dt><strong>minute</strong><span class="classifier">int</span></dt><dd><p>Minute.</p>
+</dd>
+<dt><strong>second</strong><span class="classifier">int</span></dt><dd><p>Second.</p>
+</dd>
+<dt><strong>microsecond</strong><span class="classifier">int</span></dt><dd><p>Microsecond.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="libtad.datatypes.time.TADDateTimeOffset">
+<em class="property">class </em><code class="sig-prename descclassname">libtad.datatypes.time.</code><code class="sig-name descname">TADDateTimeOffset</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">date_time</span><span class="p">:</span> <span class="n">libtad.datatypes.time.tad_date_time.TADDateTime</span></em>, <em class="sig-param"><span class="n">time_span</span><span class="p">:</span> <span class="n">libtad.datatypes.time.tad_time_span.TADTimeSpan</span></em><span class="sig-paren">)</span><a class="headerlink" href="#libtad.datatypes.time.TADDateTimeOffset" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class used to store datetime with offsets.</p>
+<p>…</p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>date_time</strong><span class="classifier">TADDateTime</span></dt><dd><p>Storage of time and date.</p>
+</dd>
+<dt><strong>time_span</strong><span class="classifier">TADTimeSpan</span></dt><dd><p>Offset.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="libtad.datatypes.time.TADTimeSpan">
+<em class="property">class </em><code class="sig-prename descclassname">libtad.datatypes.time.</code><code class="sig-name descname">TADTimeSpan</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">days</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em>, <em class="sig-param"><span class="n">hours</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em>, <em class="sig-param"><span class="n">minutes</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em>, <em class="sig-param"><span class="n">seconds</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em>, <em class="sig-param"><span class="n">microseconds</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#libtad.datatypes.time.TADTimeSpan" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class used to store timespans.</p>
+<p>…</p>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 58%" />
+<col style="width: 42%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>get_in_microseconds()</strong></p></td>
+<td><p>Used to get timespan in microseconds.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>get_in_seconds()</strong></p></td>
+<td><p>Used to get timespan in seconds.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>get_in_minutes()</strong></p></td>
+<td><p>Used to get timespan in minutes.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>get_in_hours()</strong></p></td>
+<td><p>Used to get timespan in hours.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>get_in_days()</strong></p></td>
+<td><p>Used to get timespan in days.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>add(days, hours, minutes, seconds, microseconds)</strong></p></td>
+<td><p>Adds a given timespan.</p></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py class">
+<dt id="libtad.datatypes.time.TimeChange">
+<em class="property">class </em><code class="sig-prename descclassname">libtad.datatypes.time.</code><code class="sig-name descname">TimeChange</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span><span class="p">:</span> <span class="n">xml.etree.ElementTree.Element</span></em><span class="sig-paren">)</span><a class="headerlink" href="#libtad.datatypes.time.TimeChange" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class used to store information about time change.</p>
+<p>…</p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>new_daylight_saving_time</strong><span class="classifier">int</span></dt><dd><p>New DST offset in seconds. Value will be null if there is
+no DST for this location.</p>
+</dd>
+<dt><strong>new_timezone_offset</strong><span class="classifier">int</span></dt><dd><p>New timezone offset to UTC in seconds if there is a timezone
+change for this place. Otherwise the value will be null.
+Time zones changes happen only very rarely, so the field will
+be null on most occasions.</p>
+</dd>
+<dt><strong>new_total_offset</strong><span class="classifier">int</span></dt><dd><p>New total offset to UTC in seconds.</p>
+</dd>
+<dt><strong>utc_time</strong><span class="classifier">TADDateTime</span></dt><dd><p>The UTC time of the transition.</p>
+</dd>
+<dt><strong>old_local_time</strong><span class="classifier">TADDateTime</span></dt><dd><p>The old local time before the transition.</p>
+</dd>
+<dt><strong>new_local_time</strong><span class="classifier">TADDateTime</span></dt><dd><p>The new local time after the transition.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-libtad.datatypes.converted_times">
+<span id="converted-times"></span><h3>Converted_times<a class="headerlink" href="#module-libtad.datatypes.converted_times" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="libtad.datatypes.converted_times.ConvertedTimes">
+<em class="property">class </em><code class="sig-prename descclassname">libtad.datatypes.converted_times.</code><code class="sig-name descname">ConvertedTimes</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node_utc</span><span class="p">:</span> <span class="n">xml.etree.ElementTree.Element</span></em>, <em class="sig-param"><span class="n">node_locations</span><span class="p">:</span> <span class="n">List<span class="p">[</span>xml.etree.ElementTree.Element<span class="p">]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libtad.datatypes.converted_times.ConvertedTimes" title="Permalink to this definition">¶</a></dt>
+<dd><p>An object containing UTC time stamp of requested time and a list of time
+information for the locations in the request.</p>
+<p>…</p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>utc</strong><span class="classifier">TADTime</span></dt><dd><p>UTC time stamp of requested time.</p>
+</dd>
+<dt><strong>locations</strong><span class="classifier">list of Location</span></dt><dd><p>This element contains the time information for the locations mentioned 
+in the request.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-libtad.datatypes.holidays">
+<span id="holidays"></span><h3>Holidays<a class="headerlink" href="#module-libtad.datatypes.holidays" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="libtad.datatypes.holidays.HolidayType">
+<em class="property">class </em><code class="sig-prename descclassname">libtad.datatypes.holidays.</code><code class="sig-name descname">HolidayType</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#libtad.datatypes.holidays.HolidayType" title="Permalink to this definition">¶</a></dt>
+<dd><p>An enum class with simple bitflags so the user can easily put together a set of types
+which should be included or excluded in the retrieval of holidays.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="libtad.datatypes.holidays.Holiday">
+<em class="property">class </em><code class="sig-prename descclassname">libtad.datatypes.holidays.</code><code class="sig-name descname">Holiday</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span><span class="p">:</span> <span class="n">xml.etree.ElementTree.Element</span></em><span class="sig-paren">)</span><a class="headerlink" href="#libtad.datatypes.holidays.Holiday" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class used for holidays.</p>
+<p>…</p>
+<dl class="field-list">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl>
+<dt><strong>id</strong><span class="classifier">int</span></dt><dd><p>Identifier for the holiday definition. Please note that this id
+is not unique, not even with a single year – the same holiday
+event may be returned multiple time because it is observed on a
+different day, or because it is scheduled in a different calendar
+(Hebrew or Muslim calendar) and happens multiple times within a
+Gregorian year. Use the Uid field for purposes where you need a
+unique identifier.</p>
+</dd>
+<dt><strong>uid</strong><span class="classifier">str</span></dt><dd><p>Id for the shown holiday instance. The id is designed to be unique
+across all holiday instances generated by the libtad.com API
+services and respects different calendars and other reasons that
+may cause events to occurs multiple times within one Gregorian year.</p>
+<p>Example: 0007d600000007db</p>
+</dd>
+<dt><strong>name</strong><span class="classifier">str</span></dt><dd><p>Holiday/Observance name.</p>
+</dd>
+<dt><strong>date</strong><span class="classifier">TADTime</span></dt><dd><p>Date/time of the holiday instance. Most holidays do have a specific
+time – in this case the time components will be skipped. Some
+special events like equinoxes and solstices include the exact time
+of the event as well, in this case the timestamp will be in local
+time zone (including time zone data) (countries with multiple
+timezones: local time in capital city).</p>
+</dd>
+<dt><strong>url</strong><span class="classifier">ParseResult</span></dt><dd><p>Further information about the specific holiday. The URL points to
+the libtad.com web page.</p>
+<p>Example: <a class="reference external" href="http://www.timeanddate.com/holidays/us/new-year-day">http://www.timeanddate.com/holidays/us/new-year-day</a></p>
+</dd>
+<dt><strong>country</strong><span class="classifier">Country</span></dt><dd><p>Country of the holiday instance.</p>
+</dd>
+<dt><strong>locations</strong><span class="classifier">str</span></dt><dd><p>Summary of locations where this holiday instance is valid. Element is
+only present if the holiday instance does not affect the whole country.</p>
+</dd>
+<dt><strong>states</strong><span class="classifier">list of HolidayState</span></dt><dd><p>States/subdivisions that are affected by this holiday instance. This
+element is only present if the holiday instance is not valid in the
+whole country.</p>
+</dd>
+<dt><strong>oneliner</strong><span class="classifier">str</span></dt><dd><p>A short description of the holiday instance.</p>
+</dd>
+<dt><strong>types</strong><span class="classifier">list of str</span></dt><dd><p>Classification of the holiday. Most days have only one classification,
+bust some have multiple types associated. This happens e.g. in
+conjunction with religious days that also are flag days.</p>
+<p>Example: National Holiday</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="libtad.datatypes.holidays.HolidayState">
+<em class="property">class </em><code class="sig-prename descclassname">libtad.datatypes.holidays.</code><code class="sig-name descname">HolidayState</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span><span class="p">:</span> <span class="n">xml.etree.ElementTree.Element</span></em><span class="sig-paren">)</span><a class="headerlink" href="#libtad.datatypes.holidays.HolidayState" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class used for holidays in states</p>
+<p>…</p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>id</strong><span class="classifier">int</span></dt><dd><p>Unique id of the state/subdivision. (default is -1)</p>
+</dd>
+<dt><strong>iso</strong><span class="classifier">str</span></dt><dd><p>An ISO 3166-1 country or ISO 3166-2 country state code (see [ISO3166]).</p>
+</dd>
+<dt><strong>abbreviation</strong><span class="classifier">str</span></dt><dd><p>Abbreviation of the state/subdivision.</p>
+</dd>
+<dt><strong>name</strong><span class="classifier">str</span></dt><dd><p>Common name of the state/subdivision.</p>
+</dd>
+<dt><strong>exception</strong><span class="classifier">str</span></dt><dd><p>Eventual exception if the holiday does not affect
+the whole state/subdivision.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-libtad.datatypes.astro">
+<span id="astro"></span><h3>Astro<a class="headerlink" href="#module-libtad.datatypes.astro" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="libtad.datatypes.astro.AstronomyDay">
+<em class="property">class </em><code class="sig-prename descclassname">libtad.datatypes.astro.</code><code class="sig-name descname">AstronomyDay</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span><span class="p">:</span> <span class="n">xml.etree.ElementTree.Element</span></em><span class="sig-paren">)</span><a class="headerlink" href="#libtad.datatypes.astro.AstronomyDay" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class used for storing astronomy object information for a given day.</p>
+<p>…</p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>date</strong><span class="classifier">TADDateTime</span></dt><dd><p>Date for the current information.</p>
+</dd>
+<dt><strong>day_length</strong><span class="classifier">TADTimeSpan</span></dt><dd><p>Length of this day (time between sunrise and sunset). If the sun is not
+up on this day, 00:00 will reported. If the sun does not set on this day,
+the value will read 24:00.</p>
+</dd>
+<dt><strong>moonphase</strong><span class="classifier">MoonPhase</span></dt><dd><p>Moon phase for the day. Only if requested.</p>
+</dd>
+<dt><strong>events</strong><span class="classifier">list of AstronomyDayEvent</span></dt><dd><p>Lists all events during the day.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="libtad.datatypes.astro.AstronomyDayEvent">
+<em class="property">class </em><code class="sig-prename descclassname">libtad.datatypes.astro.</code><code class="sig-name descname">AstronomyDayEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span><span class="p">:</span> <span class="n">xml.etree.ElementTree.Element</span></em><span class="sig-paren">)</span><a class="headerlink" href="#libtad.datatypes.astro.AstronomyDayEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class used to store events happening at a given day.</p>
+<p>…</p>
+<dl class="field-list">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl>
+<dt><strong>type</strong><span class="classifier">AstronomyEventCode</span></dt><dd><p>Indicates the type of the event.</p>
+</dd>
+<dt><strong>isotime</strong><span class="classifier">TADDateTimeOffset</span></dt><dd><p>Local time at which the event is happening (including UTC offset).
+The time does not include the seconds.</p>
+</dd>
+<dt><strong>utctime</strong><span class="classifier">TADDateTimeOffset</span></dt><dd><p>UTC time at which the event is happening. The time does not include
+the seconds.</p>
+</dd>
+<dt><strong>altitude</strong><span class="classifier">float</span></dt><dd><p>Altitude of the center of the queried astronomical object above an
+ideal horizon.</p>
+<p>Only for meridian type events.</p>
+</dd>
+<dt><strong>azimuth</strong><span class="classifier">float</span></dt><dd><p>Horizontal direction of the astronomical object at set/rise time
+(referring to true north). North is 0 degrees, east is 90 degrees,
+south is 180 degrees and west is 270 degrees.</p>
+<p>Only for rise and set type events.</p>
+</dd>
+<dt><strong>distance</strong><span class="classifier">float</span></dt><dd><p>Distance of the earth’s center to the center of the queried
+astronomical object in kilometers.</p>
+<p>Only for meridian type events.</p>
+</dd>
+<dt><strong>illuminated</strong><span class="classifier">float</span></dt><dd><p>The fraction of the Moon’s surface illuminated by the Sun’s
+rays as seen from the selected location.</p>
+<p>Only for the moon for meridian type events.</p>
+</dd>
+<dt><strong>posangle</strong><span class="classifier">float</span></dt><dd><p>The counterclockwise angle of the midpoint of the Moon’s bright limb as seen from the selected location.</p>
+<p>Only for the moon for meridian type events.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="libtad.datatypes.astro.AstronomyEventCode">
+<em class="property">class </em><code class="sig-prename descclassname">libtad.datatypes.astro.</code><code class="sig-name descname">AstronomyEventCode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#libtad.datatypes.astro.AstronomyEventCode" title="Permalink to this definition">¶</a></dt>
+<dd><p>An enum class containing astronomy events.</p>
+<p>…</p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>AstronomicalTwilightStarts</strong><span class="classifier">AstronomyEventCode</span></dt><dd><p>Astronomical twilight (-18°) start.</p>
+</dd>
+<dt><strong>NauticalTwilightStarts</strong><span class="classifier">AstronomyEventCode</span></dt><dd><p>Nautical twilight (-12°) start.</p>
+</dd>
+<dt><strong>CivilTwilightStarts</strong><span class="classifier">AstronomyEventCode</span></dt><dd><p>Civil twilight (-6°) start.</p>
+</dd>
+<dt><strong>Rise</strong><span class="classifier">AstronomyEventCode</span></dt><dd><p>Astronomy object rising.</p>
+</dd>
+<dt><strong>Meridian</strong><span class="classifier">AstronomyEventCode</span></dt><dd><p>Meridian passing (noon).</p>
+</dd>
+<dt><strong>AntiMeridian</strong><span class="classifier">AstronomyEventCode</span></dt><dd><p>Antimeridian passing (midnight).</p>
+</dd>
+<dt><strong>Set</strong><span class="classifier">AstronomyEventCode</span></dt><dd><p>Astronomy object setting.</p>
+</dd>
+<dt><strong>CivilTwilightEnds</strong><span class="classifier">AstronomyEventCode</span></dt><dd><p>Civil twilight (-6°) end.</p>
+</dd>
+<dt><strong>NauticalTwilightEnds</strong><span class="classifier">AstronomyEventCode</span></dt><dd><p>Nautical twilight (-12°) end.</p>
+</dd>
+<dt><strong>AstronomicalTwilightEnds</strong><span class="classifier">AstronomyEventCode</span></dt><dd><p>Astronomical twilight (-18°) end.</p>
+</dd>
+<dt><strong>NewMoon</strong><span class="classifier">AstronomyEventCode</span></dt><dd><p>New moon.</p>
+</dd>
+<dt><strong>FirstQuarter</strong><span class="classifier">AstronomyEventCode</span></dt><dd><p>Moon in first quarter.</p>
+</dd>
+<dt><strong>FullMoon</strong><span class="classifier">AstronomyEventCode</span></dt><dd><p>Full moon.</p>
+</dd>
+<dt><strong>ThirdQuarter</strong><span class="classifier">AstronomyEventCode</span></dt><dd><p>Moon in third quarter.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="libtad.datatypes.astro.AstronomyObjectType">
+<em class="property">class </em><code class="sig-prename descclassname">libtad.datatypes.astro.</code><code class="sig-name descname">AstronomyObjectType</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#libtad.datatypes.astro.AstronomyObjectType" title="Permalink to this definition">¶</a></dt>
+<dd><p>An enum class with simple bitflags so the user can easily put together
+a set of types which should be included or excluded in the retrieval 
+of holidays.</p>
+<p>…</p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>Sun</strong><span class="classifier">AstronomyObjectType</span></dt><dd><p>The sun.</p>
+</dd>
+<dt><strong>Moon</strong><span class="classifier">AstronomyObjectType</span></dt><dd><p>The moon.</p>
+</dd>
+<dt><strong>Mercury</strong><span class="classifier">AstronomyObjectType</span></dt><dd><p>Mercury.</p>
+</dd>
+<dt><strong>Venus</strong><span class="classifier">AstronomyObjectType</span></dt><dd><p>Venus.</p>
+</dd>
+<dt><strong>Mars</strong><span class="classifier">AstronomyObjectType</span></dt><dd><p>Mars.</p>
+</dd>
+<dt><strong>Jupiter</strong><span class="classifier">AstronomyObjectType</span></dt><dd><p>Jupiter.</p>
+</dd>
+<dt><strong>Saturn</strong><span class="classifier">AstronomyObjectType</span></dt><dd><p>Saturn.</p>
+</dd>
+<dt><strong>Uranus</strong><span class="classifier">AstronomyObjectType</span></dt><dd><p>Uranus.</p>
+</dd>
+<dt><strong>Neptune</strong><span class="classifier">AstronomyObjectType</span></dt><dd><p>Neptune.</p>
+</dd>
+<dt><strong>Pluto</strong><span class="classifier">AstronomyObjectType</span></dt><dd><p>Pluto.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="libtad.datatypes.astro.AstronomyCurrent">
+<em class="property">class </em><code class="sig-prename descclassname">libtad.datatypes.astro.</code><code class="sig-name descname">AstronomyCurrent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span><span class="p">:</span> <span class="n">xml.etree.ElementTree.Element</span></em><span class="sig-paren">)</span><a class="headerlink" href="#libtad.datatypes.astro.AstronomyCurrent" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class used to store current data for an astronomy object.</p>
+<p>…</p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>utctime: TADDateTimeOffset</strong></dt><dd><p>UTC time stamp for the data in ISO 8601 format.</p>
+</dd>
+<dt><strong>isotime</strong><span class="classifier">TADDateTimeOffset</span></dt><dd><p>Local time stamp for the data in ISO 8601 format (including UTC offset).</p>
+</dd>
+<dt><strong>azimuth</strong><span class="classifier">float</span></dt><dd><p>Horizontal direction of the astronomical object at set/rise time 
+(referring to true north). North is 0 degrees, east is 90 degrees, south 
+is 180 degrees and west is 270 degrees.</p>
+</dd>
+<dt><strong>altitude</strong><span class="classifier">float</span></dt><dd><p>Altitude of the center of the queried astronomical object above an 
+ideal horizon.</p>
+</dd>
+<dt><strong>distance</strong><span class="classifier">float</span></dt><dd><p>Distance of the earth’s center to the center of the queried astronomical 
+object in kilometers.</p>
+</dd>
+<dt><strong>illuminated</strong><span class="classifier">float</span></dt><dd><p>The fraction of the Moon’s surface illuminated by the Sun’s rays as seen 
+from the selected location. Only available for the moon object.</p>
+</dd>
+<dt><strong>posangle</strong><span class="classifier">float</span></dt><dd><p>The counterclockwise angle of the midpoint of the Moon’s bright limb as 
+seen from the selected location. Only available for the moon object.</p>
+</dd>
+<dt><strong>moonphase</strong><span class="classifier">MoonPhase</span></dt><dd><p>The current phase of the moon. Only available for the moon object.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="libtad.datatypes.astro.AstronomyObjectDetails">
+<em class="property">class </em><code class="sig-prename descclassname">libtad.datatypes.astro.</code><code class="sig-name descname">AstronomyObjectDetails</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span><span class="p">:</span> <span class="n">xml.etree.ElementTree.Element</span></em><span class="sig-paren">)</span><a class="headerlink" href="#libtad.datatypes.astro.AstronomyObjectDetails" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class used to store astronomy objects</p>
+<p>…</p>
+<dl class="field-list">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl>
+<dt><strong>name</strong><span class="classifier">AstronomyObjectType</span></dt><dd><p>Object name.</p>
+</dd>
+<dt><strong>days</strong><span class="classifier">list of AstronomyDay</span></dt><dd><p>astronomy service: Lists all the requested days where events are happening.</p>
+<p>astrodata service: N/A</p>
+</dd>
+<dt><strong>current</strong><span class="classifier">AstronomyCurrent</span></dt><dd><p>astronomy service: The current data for the object. Only if requested.</p>
+<p>astrodata service: N/A</p>
+</dd>
+<dt><strong>current</strong><span class="classifier">list of AstronomyCurrent</span></dt><dd><p>astronomy service: N/A</p>
+<p>astrodata service: The specific data for the object at isotime/utctime.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="libtad.datatypes.astro.AstronomyLocation">
+<em class="property">class </em><code class="sig-prename descclassname">libtad.datatypes.astro.</code><code class="sig-name descname">AstronomyLocation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span><span class="p">:</span> <span class="n">xml.etree.ElementTree.Element</span></em><span class="sig-paren">)</span><a class="headerlink" href="#libtad.datatypes.astro.AstronomyLocation" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class that wraps the information for the locations in the request.</p>
+<p>…</p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>id</strong><span class="classifier">str</span></dt><dd><p>The id of the location.</p>
+</dd>
+<dt><strong>geography</strong><span class="classifier">Geo</span></dt><dd><p>Geographical information about the location.</p>
+</dd>
+<dt><strong>objects</strong><span class="classifier">list of AstronomyObjectDetails</span></dt><dd><p>Requested astronomical information.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="libtad.datatypes.astro.Astronomy">
+<em class="property">class </em><code class="sig-prename descclassname">libtad.datatypes.astro.</code><code class="sig-name descname">Astronomy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span><span class="p">:</span> <span class="n">xml.etree.ElementTree.Element</span></em><span class="sig-paren">)</span><a class="headerlink" href="#libtad.datatypes.astro.Astronomy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Astronomical information – sunrise and sunset times. 
+Only for the timeservice and if requested.</p>
+<p>…</p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>name</strong><span class="classifier">AstronomyObjectType</span></dt><dd><p>Object name. Currently, the sun is the only supported astronomical object.</p>
+</dd>
+<dt><strong>events</strong><span class="classifier">list of AstronomyEvent</span></dt><dd><p>Lists all sunrise/sunset events during the day.</p>
+</dd>
+<dt><strong>special</strong><span class="classifier">AstronomySpecial</span></dt><dd><p>This element is only present if there are no astronomical events. In this
+case it will indicate if the sun is up or down the whole day.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="libtad.datatypes.astro.Astronomy.sunrise">
+<em class="property">property </em><code class="sig-name descname">sunrise</code><a class="headerlink" href="#libtad.datatypes.astro.Astronomy.sunrise" title="Permalink to this definition">¶</a></dt>
+<dd><p>This returns the hour and minute of the sunrise in TADDateTime format. If 
+there is no sunrise, None will be returned, but the Special-property will 
+say whether or not the sun is up or down.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>sunrise</strong><span class="classifier">TADDateTime or None</span></dt><dd><p>The sunrise in TADDateTime. None if there is no sunrise that day.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libtad.datatypes.astro.Astronomy.sunset">
+<em class="property">property </em><code class="sig-name descname">sunset</code><a class="headerlink" href="#libtad.datatypes.astro.Astronomy.sunset" title="Permalink to this definition">¶</a></dt>
+<dd><p>This returns the hour and minute of the sunset in TADDateTime format. If 
+there is no sunset, None will be returned, but the Special-property will 
+say whether or not the sun is up or down.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>sunset</strong><span class="classifier">TADDateTime or None</span></dt><dd><p>The sunset in TADDateTime. None if there is no sunset that day.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libtad.datatypes.astro.AstronomyEventClass">
+<em class="property">class </em><code class="sig-prename descclassname">libtad.datatypes.astro.</code><code class="sig-name descname">AstronomyEventClass</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#libtad.datatypes.astro.AstronomyEventClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>An enum class containing astronomical events</p>
+<p>…</p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>All</strong><span class="classifier">AstronomyEventClass</span></dt><dd><p>Combination of all known classes.</p>
+</dd>
+<dt><strong>DayLength</strong><span class="classifier">AstronomyEventClass</span></dt><dd><p>Day length.</p>
+</dd>
+<dt><strong>Meridian</strong><span class="classifier">AstronomyEventClass</span></dt><dd><p>Meridian (Noon, highest point) and Anti-Meridian (lowest point) events.</p>
+</dd>
+<dt><strong>Phase</strong><span class="classifier">AstronomyEventClass</span></dt><dd><p>Moon phase events. Additionally to the phase events (only occurring on
+four days per lunar month), an additional attribute for the current moon
+phase is reported for every day.</p>
+</dd>
+<dt><strong>SetRise</strong><span class="classifier">AstronomyEventClass</span></dt><dd><p>Set and rise events. Event times take atmospheric refraction into account.</p>
+</dd>
+<dt><strong>AllTwilights</strong><span class="classifier">AstronomyEventClass</span></dt><dd><p>Combination of all 3 twilight classes.</p>
+</dd>
+<dt><strong>CivilTwilight</strong><span class="classifier">AstronomyEventClass</span></dt><dd><p>Civil twilight (-6°).</p>
+</dd>
+<dt><strong>NauticalTwilight</strong><span class="classifier">AstronomyEventClass</span></dt><dd><p>Nautical twilight (-12°).</p>
+</dd>
+<dt><strong>AstronomicalTwilight</strong><span class="classifier">AstronomyEventClass</span></dt><dd><p>Astronomical twilight (-18°).</p>
+</dd>
+<dt><strong>Current</strong><span class="classifier">AstronomyEventClass</span></dt><dd><p>The current phase for the place requested. Additional attributes for 
+illumination (moon), azimuth, distance.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="libtad.datatypes.astro.MoonPhase">
+<em class="property">class </em><code class="sig-prename descclassname">libtad.datatypes.astro.</code><code class="sig-name descname">MoonPhase</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#libtad.datatypes.astro.MoonPhase" title="Permalink to this definition">¶</a></dt>
+<dd><p>An enum class containing moon phase for the day.</p>
+<p>…</p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>NotRequested</strong><span class="classifier">MoonPhase</span></dt><dd><p>The not requested moon phases.</p>
+</dd>
+<dt><strong>NewMoon</strong><span class="classifier">MoonPhase</span></dt><dd><p>New moon.</p>
+</dd>
+<dt><strong>WaxingCrescent</strong><span class="classifier">MoonPhase</span></dt><dd><p>Waxing crescent moon.</p>
+</dd>
+<dt><strong>FirstQuarter</strong><span class="classifier">MoonPhase</span></dt><dd><p>Moon in first quarter.</p>
+</dd>
+<dt><strong>WaxingGibbous</strong><span class="classifier">MoonPhase</span></dt><dd><p>Waxing gibbous moon.</p>
+</dd>
+<dt><strong>FullMoon</strong><span class="classifier">MoonPhase</span></dt><dd><p>Full moon.</p>
+</dd>
+<dt><strong>WaningGibbous</strong><span class="classifier">MoonPhase</span></dt><dd><p>Waning gibbous moon.</p>
+</dd>
+<dt><strong>ThirdQuarter</strong><span class="classifier">MoonPhase</span></dt><dd><p>Moon in third quarter.</p>
+</dd>
+<dt><strong>WaningCrescent</strong><span class="classifier">MoonPhase</span></dt><dd><p>Waning crescent moon.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="libtad.datatypes.astro.AstronomyEvent">
+<em class="property">class </em><code class="sig-prename descclassname">libtad.datatypes.astro.</code><code class="sig-name descname">AstronomyEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span><span class="p">:</span> <span class="n">xml.etree.ElementTree.Element</span></em><span class="sig-paren">)</span><a class="headerlink" href="#libtad.datatypes.astro.AstronomyEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Contains sunrise/sunset event of a given day.</p>
+<p>…</p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>type</strong><span class="classifier">AstronomyEventType</span></dt><dd><p>Indicates the type of the event.</p>
+</dd>
+<dt><strong>hour</strong><span class="classifier">int</span></dt><dd><p>Hour at which the event is happening (local time).</p>
+</dd>
+<dt><strong>minute</strong><span class="classifier">int</span></dt><dd><p>minute at which the event is happening (local time).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-libtad.datatypes.dst">
+<span id="dst"></span><h3>Dst<a class="headerlink" href="#module-libtad.datatypes.dst" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="libtad.datatypes.dst.DST">
+<em class="property">class </em><code class="sig-prename descclassname">libtad.datatypes.dst.</code><code class="sig-name descname">DST</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span><span class="p">:</span> <span class="n">xml.etree.ElementTree.Element</span></em><span class="sig-paren">)</span><a class="headerlink" href="#libtad.datatypes.dst.DST" title="Permalink to this definition">¶</a></dt>
+<dd><p>DST information for a given region.</p>
+<p>…</p>
+<dl class="field-list">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl>
+<dt><strong>region</strong><span class="classifier">Region</span></dt><dd><p>The geographical region where this information is valid.
+Contains country, a textual description of the region and
+the name of the biggest place.</p>
+</dd>
+<dt><strong>standard_timezone</strong><span class="classifier">TADTimezone</span></dt><dd><p>Information about the standard timezone. This element is
+always returned.</p>
+</dd>
+<dt><strong>dst_timezone</strong><span class="classifier">TADTimezone</span></dt><dd><p>Information about the daylight savings timezone. Suppressed,
+if there are no DST changes in the queried year.</p>
+<p>Please note that if the region is on daylight savings time
+for the whole year, this information will be returned in the
+stdtimezone element. Additionally, the Special element will
+be set to DaylightSavingTimeAllYear.</p>
+</dd>
+<dt><strong>special</strong><span class="classifier">DSTSpecialType</span></dt><dd><p>Indicates if the region does not observe DST at all, or is on
+DST all year long.</p>
+</dd>
+<dt><strong>dst_start</strong><span class="classifier">TADDateTime</span></dt><dd><p>Starting date of daylight savings time. Suppressed, if there
+are no DST changes in the queried year.</p>
+</dd>
+<dt><strong>dst_end</strong><span class="classifier">TADDateTime</span></dt><dd><p>Ending date of daylight savings time. Suppressed, if there are
+no DST changes in the queried year.</p>
+</dd>
+<dt><strong>time_changes</strong><span class="classifier">list of TimeChange</span></dt><dd><p>Time changes (daylight savings time). Only present if requested
+and information is available.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="libtad.datatypes.dst.DSTSpecialType">
+<em class="property">class </em><code class="sig-prename descclassname">libtad.datatypes.dst.</code><code class="sig-name descname">DSTSpecialType</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#libtad.datatypes.dst.DSTSpecialType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Indicates if the region does not observe DST at all, or is on DST all year long.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-libtad.datatypes.business">
+<span id="business"></span><h3>Business<a class="headerlink" href="#module-libtad.datatypes.business" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="libtad.datatypes.business.BusinessDates">
+<em class="property">class </em><code class="sig-prename descclassname">libtad.datatypes.business.</code><code class="sig-name descname">BusinessDates</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node_geo</span><span class="p">:</span> <span class="n">xml.etree.ElementTree.Element</span></em>, <em class="sig-param"><span class="n">node_periods</span><span class="p">:</span> <span class="n">List<span class="p">[</span>xml.etree.ElementTree.Element<span class="p">]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#libtad.datatypes.business.BusinessDates" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class used to store geographical information and a list of 
+calculated results for a period.</p>
+<p>…</p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>geo</strong><span class="classifier">Geo</span></dt><dd><p>Geographical information about the location</p>
+</dd>
+<dt><strong>periods</strong><span class="classifier">list of PeriodType</span></dt><dd><p>List of calculated results for a period.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="libtad.datatypes.business.BusinessDaysFilterType">
+<em class="property">class </em><code class="sig-prename descclassname">libtad.datatypes.business.</code><code class="sig-name descname">BusinessDaysFilterType</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#libtad.datatypes.business.BusinessDaysFilterType" title="Permalink to this definition">¶</a></dt>
+<dd><p>An enum class containing business.PeriodTypeday filters.</p>
+<p>…</p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>Mon</strong><span class="classifier">BusinessDaysFilterType</span></dt><dd><p>Monday.</p>
+</dd>
+<dt><strong>Tue</strong><span class="classifier">BusinessDaysFilterType</span></dt><dd><p>Tuesday.</p>
+</dd>
+<dt><strong>Wed</strong><span class="classifier">BusinessDaysFilterType</span></dt><dd><p>Wednesday.</p>
+</dd>
+<dt><strong>Thu</strong><span class="classifier">BusinessDaysFilterType</span></dt><dd><p>Thursday.</p>
+</dd>
+<dt><strong>Fri</strong><span class="classifier">BusinessDaysFilterType</span></dt><dd><p>Friday.</p>
+</dd>
+<dt><strong>Sat</strong><span class="classifier">BusinessDaysFilterType</span></dt><dd><p>Saturday.</p>
+</dd>
+<dt><strong>Sun</strong><span class="classifier">BusinessDaysFilterType</span></dt><dd><p>Sunday.</p>
+</dd>
+<dt><strong>All</strong><span class="classifier">BusinessDaysFilterType</span></dt><dd><p>All days.</p>
+</dd>
+<dt><strong>Weekend</strong><span class="classifier">BusinessDaysFilterType</span></dt><dd><p>Weekend.</p>
+</dd>
+<dt><strong>Holidays</strong><span class="classifier">BusinessDaysFilterType</span></dt><dd><p>Holidays.</p>
+</dd>
+<dt><strong>Weekendholidays</strong><span class="classifier">BusinessDaysFilterType</span></dt><dd><p>Weekend and holidays.</p>
+</dd>
+<dt><strong>Nothing</strong><span class="classifier">BusinessDaysFilterType</span></dt><dd><p>No days.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="libtad.datatypes.business.BusinessDaysOperatorType">
+<em class="property">class </em><code class="sig-prename descclassname">libtad.datatypes.business.</code><code class="sig-name descname">BusinessDaysOperatorType</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#libtad.datatypes.business.BusinessDaysOperatorType" title="Permalink to this definition">¶</a></dt>
+<dd><p>An enum class containing business.PeriodTypedays operators.</p>
+<p>…</p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>Add</strong><span class="classifier">BusinessDaysOperatorType</span></dt><dd><p>Add.</p>
+</dd>
+<dt><strong>Subtract</strong><span class="classifier">BusinessDaysOperatorType</span></dt><dd><p>Subtract.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="libtad.datatypes.business.BusinessFilterMethod">
+<em class="property">class </em><code class="sig-prename descclassname">libtad.datatypes.business.</code><code class="sig-name descname">BusinessFilterMethod</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#libtad.datatypes.business.BusinessFilterMethod" title="Permalink to this definition">¶</a></dt>
+<dd><p>An enum class containing methods for filtering in business.PeriodTypeapis.</p>
+<p>…</p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>Included</strong><span class="classifier">BusinessFilterMethod</span></dt><dd><p>Included.</p>
+</dd>
+<dt><strong>Excluded</strong><span class="classifier">BusinessFilterMethod</span></dt><dd><p>Excluded.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="libtad.datatypes.business.BusinessHolidayType">
+<em class="property">class </em><code class="sig-prename descclassname">libtad.datatypes.business.</code><code class="sig-name descname">BusinessHolidayType</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span><span class="p">:</span> <span class="n">xml.etree.ElementTree.Element</span></em><span class="sig-paren">)</span><a class="headerlink" href="#libtad.datatypes.business.BusinessHolidayType" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt id="libtad.datatypes.business.PeriodType">
+<em class="property">class </em><code class="sig-prename descclassname">libtad.datatypes.business.</code><code class="sig-name descname">PeriodType</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span><span class="p">:</span> <span class="n">xml.etree.ElementTree.Element</span></em><span class="sig-paren">)</span><a class="headerlink" href="#libtad.datatypes.business.PeriodType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculated result for a given period.</p>
+<p>…</p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>included_days</strong><span class="classifier">int</span></dt><dd><p>Number of days in the given period.</p>
+</dd>
+<dt><strong>calendar_days</strong><span class="classifier">int</span></dt><dd><p>Number of calendar days in the given period.</p>
+</dd>
+<dt><strong>skipped_days</strong><span class="classifier">int</span></dt><dd><p>Number of days which was skipped in the given period.</p>
+</dd>
+<dt><strong>start_date</strong><span class="classifier">TADTime</span></dt><dd><p>The date the period started from.</p>
+</dd>
+<dt><strong>end_date</strong><span class="classifier">TADTime</span></dt><dd><p>The date the period ended on.</p>
+</dd>
+<dt><strong>weekdays</strong><span class="classifier">WeekdaysType</span></dt><dd><p>The spread of excluded or included weekdays in included_days.</p>
+</dd>
+<dt><strong>holidays</strong><span class="classifier">BusinessHolidayType</span></dt><dd><p>Holidays which occur in the given period.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="libtad.datatypes.business.WeekdaysType">
+<em class="property">class </em><code class="sig-prename descclassname">libtad.datatypes.business.</code><code class="sig-name descname">WeekdaysType</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span><span class="p">:</span> <span class="n">xml.etree.ElementTree.Element</span></em><span class="sig-paren">)</span><a class="headerlink" href="#libtad.datatypes.business.WeekdaysType" title="Permalink to this definition">¶</a></dt>
+<dd><p>The spread of excluded or included weekdays.</p>
+<p>…</p>
+<dl class="simple">
+<dt>type<span class="classifier">BusinessFilterMethod</span></dt><dd><p>Specifies whether or not the weekdays counted were part of an included 
+or excluded filter.</p>
+</dd>
+<dt>count<span class="classifier">int</span></dt><dd><p>How many days in total have been counted.</p>
+</dd>
+<dt>mon<span class="classifier">int</span></dt><dd><p>Count for Mondays.</p>
+</dd>
+<dt>tue<span class="classifier">int</span></dt><dd><p>Count for Tuesdays.</p>
+</dd>
+<dt>wed<span class="classifier">int</span></dt><dd><p>Count for Wednesdays.</p>
+</dd>
+<dt>thu<span class="classifier">int</span></dt><dd><p>Count for Thursdays.</p>
+</dd>
+<dt>fri<span class="classifier">int</span></dt><dd><p>Count for Fridays.</p>
+</dd>
+<dt>sat<span class="classifier">int</span></dt><dd><p>Count for Saturdays.</p>
+</dd>
+<dt>sun<span class="classifier">int</span></dt><dd><p>Count for Sundays.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">libtad-python</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+      <li>Next: <a href="install.html" title="next chapter">Installation</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Time and Date AS.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.4.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

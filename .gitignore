@@ -1,0 +1,7 @@
+/venv
+/libtad.egg-info
+/build
+__pycache__/
+*.pyo
+*.pyc
+tests/config.ini
