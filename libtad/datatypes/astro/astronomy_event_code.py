@@ -38,19 +38,19 @@ class AstronomyEventCode(Flag):
         Moon in third quarter.
     """
 
-    AstronomicalTwilightStarts = 1,
-    NauticalTwilightStarts = 1 << 1,
-    CivilTwilightStarts = 1 << 2,
-    Rise = 1 << 3,
-    Meridian = 1 << 4,
-    AntiMeridian = 1 << 5,
-    Set = 1 << 6,
-    CivilTwilightEnds = 1 << 7,
-    NauticalTwilightEnds = 1 << 8,
-    AstronomicalTwilightEnds = 1 << 9,
-    NewMoon = 1 << 10,
-    FirstQuarter = 1 << 11,
-    FullMoon = 1 << 12,
+    AstronomicalTwilightStarts = 1
+    NauticalTwilightStarts = 1 << 1
+    CivilTwilightStarts = 1 << 2
+    Rise = 1 << 3
+    Meridian = 1 << 4
+    AntiMeridian = 1 << 5
+    Set = 1 << 6
+    CivilTwilightEnds = 1 << 7
+    NauticalTwilightEnds = 1 << 8
+    AstronomicalTwilightEnds = 1 << 9
+    NewMoon = 1 << 10
+    FirstQuarter = 1 << 11
+    FullMoon = 1 << 12
     ThirdQuarter = 1 << 13
 
     @staticmethod

@@ -28,14 +28,14 @@ class MoonPhase(Flag):
         Waning crescent moon.
     """
 
-    NotRequested = 1,
-    NewMoon = 1 << 1,
-    WaxingCrescent = 1 << 2,
-    FirstQuarter = 1 << 3,
-    WaxingGibbous = 1 << 4,
-    FullMoon = 1 << 5,
-    WaningGibbous = 1 << 6,
-    ThirdQuarter = 1 << 7,
+    NotRequested = 1
+    NewMoon = 1 << 1
+    WaxingCrescent = 1 << 2
+    FirstQuarter = 1 << 3
+    WaxingGibbous = 1 << 4
+    FullMoon = 1 << 5
+    WaningGibbous = 1 << 6
+    ThirdQuarter = 1 << 7
     WaningCrescent = 1 << 8
 
     @staticmethod
